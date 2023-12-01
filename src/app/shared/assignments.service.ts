@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class AssignmentsService {
   assignments: Assignment[] = [];
   loggedIn: boolean;
-  url = 'https://angular-back-m1miage2023-2024.onrender.com/api/assignments';
+  url = 'https://angular-back-m1miage2023-2024.onrender.com/assignments';
 
   constructor(private loggingService:LoggingService, private http:HttpClient) { }
   
