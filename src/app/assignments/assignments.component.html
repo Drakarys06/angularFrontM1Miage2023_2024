@@ -7,10 +7,13 @@
 
   <mat-list *ngFor="let assignment of assignments">
     <nav><a [routerLink]="isLogged() ? '/assignment/' + assignment.id: null" [style.pointer-events]="isLogged() ? 'auto' : 'none'">{{assignment.nom}}
-        <h3 mat-subheader>{{assignment.dateDeRendu | date : 'dd/MM/yyyy'}}</h3>
-        <mat-list-item (click)="assignmentClique(assignment)">
+        <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu | date : 'dd/MM/yyyy'}}</h3>
+        <h3 mat-subheader>Auteur : {{assignment.auteur}}</h3>
+        <h3 mat-subheader>Matière : {{assignment.matiere}}</h3>
+        <mat-list-item>
           <p appRendu *ngIf="assignment.rendu; else nonsoumis">
             Devoir intulé : {{assignment.nom}} a été rendu.
+            Note : {{assignment.note}} /20
           </p>
           <ng-template #nonsoumis>
             Le devoir {{assignment.nom}} n'a pas été rendu.
@@ -19,5 +22,4 @@
         </mat-list-item>
       </a></nav>
   </mat-list>
-  <!--<app-assignment-detail [assignmentTransmis]="assignementSelectionne"></app-assignment-detail> -->
 </main>

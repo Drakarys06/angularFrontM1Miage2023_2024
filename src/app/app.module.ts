@@ -27,7 +27,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { LogginComponent } from './assignments/loggin/loggin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule, MatFormFieldModule, MatInputModule,
     FormsModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule,
     MatToolbarModule, MatSidenavModule, MatListModule, AppRoutingModule, MatSlideToggleModule,
-    ReactiveFormsModule, HttpClientModule 
+    ReactiveFormsModule, HttpClientModule, MatCheckboxModule, MatSelectModule, MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

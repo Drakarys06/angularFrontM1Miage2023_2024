@@ -2,7 +2,7 @@
     <mat-toolbar-row>
         <button mat-button (click)="openSidenav=!openSidenav"><mat-icon>menu</mat-icon></button>
         <button mat-button> <a routerLink="/home"><mat-icon>home</mat-icon> </a></button>
-        <button mat-button (click)="onLogginForm()"><mat-icon>person</mat-icon></button>
+        <button *ngIf="!authService.loggedIn" (click)="onLogginForm()"><mat-icon>person</mat-icon></button>
         <button *ngIf="authService.loggedIn" mat-button (click)="onLogOut()"><mat-icon>exit_to_app</mat-icon></button>
     </mat-toolbar-row>
 </mat-toolbar>

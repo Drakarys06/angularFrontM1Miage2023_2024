@@ -24,20 +24,16 @@ export class AssignmentsService {
     return this.http.get<Assignment>(this.url + "/" + id);
   }
 
-  addAssignment(assignment: Assignment): Observable<Assignment> {
-    /*this.assignments.push(assignment);
-    this.loggingService.log(assignment.nom, "ajouté");
-    return of(assignment);*/
+  addAssignment(assignment: Assignment): Observable<any> {
     return this.http.post<Assignment>(this.url, assignment);
   }
 
-  updateAssignment(assignment: Assignment): Observable<string> {
-    return of("Assignment mis à jour");
+  updateAssignment(assignment: Assignment): Observable<any> {
+    return this.http.put<Assignment>(this.url, assignment);
   }
 
-  deleteAssignment(assignment: Assignment): Observable<string> {
-    let pos = this.assignments.indexOf(assignment);
-    this.assignments.splice(pos, 1);
-    return of("Assignment supprimé");
+  deleteAssignment(assignment: Assignment): Observable<any> {
+    let deleteUrl = this.url + "/" + assignment._id;
+    return this.http.delete<Assignment>(deleteUrl);
   }
 }

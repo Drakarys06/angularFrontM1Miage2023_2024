@@ -1,6 +1,7 @@
 import { Component, OnInit, /*EventEmitter, Output*/ } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from '../../shared/assignments.service';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-add-assignment',
@@ -12,22 +13,34 @@ export class AddAssignmentComponent implements OnInit {
 
   nomDevoir: string = ""
   dateDeRendu?: Date;
-  constructor(private assignmentsService:AssignmentsService) { }
+  auteur: string = "";
+  matiere: string = "";
+  note: number = 0;
+  remarques: string = "";
+  rendu: boolean = false;
+  matieres: string[] = ['Base de données', 'Programmation Web', 'Programmation Mobile', 'Programmation Orientée Objet', 'Réseaux', 'Systèmes d\'exploitation', 'Anglais', 'Mathématiques', 'Projet', 'Stage']
+  constructor(private assignmentsService: AssignmentsService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(event: any) {
-    let a = new Assignment();
-    a.id = Math.floor(Math.random()*1000);
-    a.nom = this.nomDevoir;
+    let newAssignment = new Assignment();
+    newAssignment.id = Math.floor(Math.random() * 1000);
+    newAssignment.nom = this.nomDevoir;
+    newAssignment.dateDeRendu = this.dateDeRendu;
+    newAssignment.auteur = this.auteur;
+    newAssignment.matiere = this.matiere;
+    newAssignment.remarques = this.remarques;
+    newAssignment.rendu = this.rendu;
+    newAssignment.note = this.note;
+
     if (this.dateDeRendu)
-      a.dateDeRendu = this.dateDeRendu;
+      newAssignment.dateDeRendu = this.dateDeRendu;
 
-    a.rendu = false;
+    newAssignment.rendu = false;
 
-    //this.assignmentAdded.emit(a);
-    this.assignmentsService.addAssignment(a).subscribe(message => {
+    this.assignmentsService.addAssignment(newAssignment).subscribe(message => {
       console.log(message);
     });
   }
