@@ -15,16 +15,16 @@ export class AssignmentsService {
   constructor(private loggingService:LoggingService, private http:HttpClient) { }
   
   getAssignmentsPagine(page: number, limit: number): Observable<any> {
-    return this.http.get<Assignment[]>(this.url + "?page=" + page + "&limit=" + limit);
+    return this.http.get<any>(this.url + "?page=" + page + "&limit=" + limit);
   }
 
-  getAssignments(): Observable <Assignment[]> {
+  getAssignments(): Observable <any> {
     //return of (this.assignments);
-    return this.http.get<Assignment[]>(this.url);
+    return this.http.get<any>(this.url);
   }
 
   getAssignment(id: number): Observable<any> {
-    return this.http.get<Assignment>(this.url + "/" + id);
+    return this.http.get<any>(this.url + "/" + id);
   }
 
   addAssignment(assignment: Assignment): Observable<any> {

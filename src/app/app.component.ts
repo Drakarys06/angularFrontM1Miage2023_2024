@@ -18,7 +18,7 @@ export class AppComponent {
   onLoggin() {
     throw new Error('Method not implemented.');
   }
-  titre = 'Application de gestion de devoirs (Assignments)';
+  titre = 'Application de gestion de devoirs';
   openSidenav = false;
 
   constructor(public authService: AuthService, private router: Router) { }

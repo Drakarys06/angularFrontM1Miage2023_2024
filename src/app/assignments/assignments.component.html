@@ -1,8 +1,6 @@
 <app-add-assignment (assignmentAdded)="onAddAssignement($event)" *ngIf="formVisible"></app-add-assignment>
 
 <main class="container">
-  <button mat-flat-button color="primary" (click)="onAddAssignmentBtnClick()" routerLink="/add">Ajouter un
-    devoir</button>
   <h3>Liste des devoirs :</h3>
   <app-table-assgniment></app-table-assgniment>
 </main>

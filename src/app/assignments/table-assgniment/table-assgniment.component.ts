@@ -26,10 +26,11 @@ export class TableAssgnimentComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.assignmentsService.getAssignmentsPagine(1,5).subscribe((data: Assignment[]) => {
-      this.assignments = data;
-      this.dataSource = new MatTableDataSource(this.assignments);
-      this.dataSource.paginator = this.paginator;
+    this.assignmentsService.getAssignmentsPagine(1,5).subscribe({
+      next: ({ docs }) => {
+        this.assignments = docs;
+      },
+      error: (error) => console.error('Error fetching assignments:', error),
     });
   }
 
