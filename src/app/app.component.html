@@ -1,13 +1,13 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         <button mat-button (click)="openSidenav=!openSidenav"><mat-icon>menu</mat-icon></button>
-        <button mat-button> <a routerLink="/home"><mat-icon>home</mat-icon> </a></button>
+        <button mat-button routerLink="/home"><mat-icon>home</mat-icon></button>
         <button *ngIf="!authService.loggedIn" (click)="onLogginForm()"><mat-icon>person</mat-icon></button>
         <button *ngIf="authService.loggedIn" mat-button (click)="onLogOut()"><mat-icon>exit_to_app</mat-icon></button>
     </mat-toolbar-row>
 </mat-toolbar>
 <h1>
-    <nav><a routerLink="/home">{{titre}}</a></nav>
+    <nav routerLink="/home">{{titre}}</nav>
 </h1>
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="openSidenav" mode="side">
@@ -17,12 +17,6 @@
                     devoirs</a></mat-list-item>
             <mat-list-item><a routerLink="/add"
                     style="color: aliceblue; text-decoration: none; white-space: pre-wrap;">Ajout d'un
-                    devoir</a></mat-list-item>
-            <mat-list-item><a routerLink="/edit"
-                    style="color: aliceblue; text-decoration: none; white-space: pre-wrap;">Modification d'un
-                    devoir</a></mat-list-item>
-            <mat-list-item><a routerLink="/home"
-                    style="color: aliceblue; text-decoration: none; white-space: pre-wrap;">Suppression d'un
                     devoir</a></mat-list-item>
             <mat-list-item><a routerLink="/home"
                     style="color: aliceblue; text-decoration: none; white-space: pre-wrap;">Génération de données
