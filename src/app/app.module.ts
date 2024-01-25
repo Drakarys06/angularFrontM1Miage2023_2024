@@ -29,6 +29,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
+import { TableAssgnimentComponent } from './assignments/table-assgniment/table-assgniment.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,7 @@ import {MatMenuModule} from '@angular/material/menu';
     AddAssignmentComponent,
     EditassignmentComponent,
     LogginComponent,
+    TableAssgnimentComponent,
     ],
   imports: [
     BrowserModule,
@@ -48,7 +54,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatCardModule, MatFormFieldModule, MatInputModule,
     FormsModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule,
     MatToolbarModule, MatSidenavModule, MatListModule, AppRoutingModule, MatSlideToggleModule,
-    ReactiveFormsModule, HttpClientModule, MatCheckboxModule, MatSelectModule, MatMenuModule
+    ReactiveFormsModule, HttpClientModule, MatCheckboxModule, MatSelectModule, MatMenuModule, MatTableModule, MatSortModule, MatPaginatorModule, MatDialogModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

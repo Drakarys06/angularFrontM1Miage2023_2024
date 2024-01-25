@@ -13,7 +13,8 @@ const routes: Routes = [
     { path: 'add', component: AddAssignmentComponent },
     { path: 'assignment/:id', component: AssignmentDetailComponent },
     { path: 'assignment/:id/edit', component: EditassignmentComponent, canActivate: [authGuard]},
-    { path: 'loggin', component: LogginComponent }
+    { path: 'loggin', component: LogginComponent },
+    { path: 'assignment-details/:id', component: AssignmentDetailComponent}
   ];
 
 @NgModule({

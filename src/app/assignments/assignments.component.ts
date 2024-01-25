@@ -21,51 +21,73 @@ export class AssignmentsComponent implements OnInit {
   assignementSelectionne!: Assignment;
   assignments: Assignment[] = [];
 
+  //Gérer la pagination
+  page: number = 1;
+  limit: number = 5;
+  totalDocs!: number;
+  totalPages!: number;
+  NextPage!: number;
+  PrevPage!: number;
+  hasPrevPage!: boolean;
+  hasNextPage!: boolean;
+
   constructor(private assignmentsService: AssignmentsService, private authService: AuthService) { }
 
   ngOnInit(): void {
     //this.assignments = this.assignmentsService.getAssignments();
-    this.getAssignments();
-  }
-  getDescription() {
-    return 'Je suis un sous composant';
-  }
+    //this.getAssignments();
+    this.assignmentsService.getAssignmentsPagine(this.page, this.limit).
+      subscribe(data => {
+        this.assignments = data.docs;
+        this.totalDocs = data.totalDocs;
+        this.totalPages = data.totalPages;
+        this.NextPage = data.nextPage;
+        this.PrevPage = data.prevPage;
+        this.hasPrevPage = data.hasPrevPage;
+        this.hasNextPage = data.hasNextPage;
+        console.log(data);
+      });
+    }
 
-  getColor(a: any) {
-    if (a.rendu) return 'green';
-    else return 'red';
-  }
+    getDescription() {
+      return 'Je suis un sous composant';
+    }
 
-  assignmentClique(a: Assignment) {
-    this.assignementSelectionne = a;
-  }
+    getColor(a: any) {
+      if (a.rendu) return 'green';
+      else return 'red';
+    }
 
-  onAddAssignmentBtnClick() {
-    //this.formVisible = true;
-  }
+    assignmentClique(a: Assignment) {
+      this.assignementSelectionne = a;
+    }
 
-  onAddAssignement(event: any) {
-    //this.assignments.push(event);
-    this.assignmentsService.addAssignment(event).subscribe((message) => {
-      console.log(message);
-    });
-    this.formVisible = false;
-  }
+    onAddAssignmentBtnClick() {
+      //this.formVisible = true;
+    }
 
-  getAssignments() {
-    this.assignmentsService.getAssignments().subscribe((assignments) => {
-      this.assignments = assignments;
-    });
-  }
+    onAddAssignement(event: any) {
+      //this.assignments.push(event);
+      this.assignmentsService.addAssignment(event).subscribe((message) => {
+        console.log(message);
+      });
+      this.formVisible = false;
+    }
 
-  isLogged():boolean {
-    return this.authService.isLog2();
-  }
+    getAssignments() {
+      this.assignmentsService.getAssignments().subscribe((assignments) => {
+        this.assignments = assignments;
+      });
+    }
 
-  isAdmin(): boolean  {
-    console.log(this.authService.isAdmin2());
-    return this.authService.isAdmin2();
-  }
+    isLogged():boolean {
+      return this.authService.isLog2();
+    }
 
-  
-}
+    isAdmin(): boolean  {
+      console.log(this.authService.isAdmin2());
+      return this.authService.isAdmin2();
+    }
+
+
+  }
