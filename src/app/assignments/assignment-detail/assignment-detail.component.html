@@ -5,6 +5,11 @@
                 <h3>{{ assignmentTransmis.nom }}</h3>
             </mat-card-title>
             <mat-card-subtitle>{{ assignmentTransmis.dateDeRendu | date: 'dd/MM/yyyy' }}</mat-card-subtitle>
+            <mat-card-content>
+                <p>{{ assignmentTransmis.matiere }}</p>
+                <p>{{ assignmentTransmis.rendu ? 'Vous avez eu ' + assignmentTransmis.note : 'Devoir pas encore rendu' }}</p>
+                <p>Remarques/Description du devoir : {{ assignmentTransmis.remarques }}</p>
+            </mat-card-content>
         </mat-card-content>
         <mat-checkbox *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">Devoir rendu</mat-checkbox>
         <button mat-stroked-button color="primary" (click)="onClickEdit()" [disabled]="!isAdmin()">Edit</button>
