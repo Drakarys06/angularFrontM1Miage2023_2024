@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from '../../shared/assignments.service';
 import { AuthService } from 'src/app/shared/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -22,7 +23,7 @@ export class AddTestComponent implements OnInit {
   matieres: string[] = ['Base de données', 'Programmation Web', 'Programmation Mobile', 'Programmation Orientée Objet', 'Réseaux', 'Systèmes d\'exploitation', 'Anglais', 'Mathématiques', 'Projet', 'Stage']
   nbrDevoirs: number;
 
-  constructor(private assignmentsService: AssignmentsService, private authService: AuthService) { }
+  constructor(private assignmentsService: AssignmentsService, private authService: AuthService, private route: ActivatedRoute, private router: Router,) { }
 
   ngOnInit(): void {
   }
@@ -37,18 +38,31 @@ export class AddTestComponent implements OnInit {
         newAssignment.dateDeRendu = this.dateDeRendu;
       newAssignment.rendu = false;
       newAssignment.matiere = this.matiere;
-      //newAssignment.auteur = this.authServ.login;
       newAssignment.note = Math.floor(Math.random() * 20);
       newAssignment.remarques = this.remarques;
-
-      this.assignmentsService.addAssignment(newAssignment).subscribe(message => {
-        console.log(message);
-      });
+      if (this.authService.getUser.user == 'admin') {
+        console.log("FKNQBSKJFDQJKSBFKJQSBFJKBQSFJK")
+        for (let userr of this.authService.getUsers) {
+          console.log(userr)
+          if (userr.user == 'user') {
+            newAssignment.auteur = userr.login;
+            this.assignmentsService.addAssignment(newAssignment).subscribe(message => {
+              console.log(message);
+            });
+          }
+        }
+      } else {
+        newAssignment.auteur = this.authService.getUser.login;
+        this.assignmentsService.addAssignment(newAssignment).subscribe(message => {
+          console.log(message);
+        });
+      }
+      this.router.navigate(['/home']);
     }
 
   }
 
-  isAdmin(): boolean  {
+  isAdmin(): boolean {
     console.log(this.authService.isAdmin2());
     return this.authService.isAdmin2();
   }

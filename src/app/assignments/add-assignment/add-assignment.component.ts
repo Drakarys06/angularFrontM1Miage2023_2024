@@ -36,11 +36,12 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.matiere = this.matiere;
     newAssignment.note = Math.floor(Math.random() * 20);
     newAssignment.remarques = this.remarques;
-    if (this.authService.getUser.role == 'admin') {
-      for (let user of this.authService.getUsers) {
-        console.log(user)
-        if (user.role == 'user') {
-          newAssignment.auteur = user.login;
+    if (this.authService.getUser.user == 'admin') {
+      console.log("FKNQBSKJFDQJKSBFKJQSBFJKBQSFJK")
+      for (let userr of this.authService.getUsers) {
+        console.log(userr)
+        if (userr.user == 'user') {
+          newAssignment.auteur = userr.login;
           this.assignmentsService.addAssignment(newAssignment).subscribe(message => {
             console.log(message);
           });
