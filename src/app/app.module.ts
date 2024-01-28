@@ -34,6 +34,7 @@ import { TableAssgnimentComponent } from './assignments/table-assgniment/table-a
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AddTestComponent } from './assignments/add-test/add-test.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     EditassignmentComponent,
     LogginComponent,
     TableAssgnimentComponent,
+    AddTestComponent,
     ],
   imports: [
     BrowserModule,

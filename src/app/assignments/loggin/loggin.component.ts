@@ -1,42 +1,59 @@
-import { Component } from '@angular/core';
+import { ConstantPool } from '@angular/compiler';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
+import { LoggingService } from 'src/app/shared/logging.service';
 
 @Component({
   selector: 'app-loggin',
   templateUrl: './loggin.component.html',
   styleUrls: ['./loggin.component.css']
 })
-export class LogginComponent {
+export class LogginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private loggingService: LoggingService, private router: Router, private authService: AuthService) { }
 
   loginForm = new FormGroup({
-    username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    login: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    role: new FormControl('user' || 'admin', Validators.required) // Défaut: role 'user' ou 'admin'
   });
 
   isLogFailed = false;
-  getErrorLoggin = 'Nom d\'utilisateur ou mot de passe incorrect.';
+  getErrorLoggin = 'Nom d\'utilisateur, mot de passe ou rôle incorrect.';
 
-  ngOnInit(): void {
-
+  ngOnInit() {
+    this.getUsers();
   }
 
-  onLogin() {
-    if (this.loginForm.valid) {
-      const username = this.loginForm.value.username;
-      const password = this.loginForm.value.password;
-      const isLoggedIn = this.authService.logIn(username || '', password || '');
-      if (isLoggedIn !== undefined && isLoggedIn !== null) {
-        this.router.navigate(['/home']);
-      } else {
+  getUsers() {
+    this.loggingService.getUsers().subscribe(
+      users => {
+        console.log(users)
+        this.authService.getUsers = users;
+        for (let user of users) {
+          if (user.login === this.getUsername.value &&
+            user.pwd === this.getPassword.value) {
+            console.log('Les informations du formulaire correspondent à un utilisateur.');
+            this.authService.getUser = user;
+            console.log('Utilisateur connecté :', this.authService.getUser);
+            this.isLogFailed = false;
+            this.authService.logIn(user.user);
+            this.router.navigate(['/home']);
+            break;
+          }
+        }
+        console.log('Aucun utilisateur ne correspond aux informations du formulaire.');
+      },
+      error => {
+        console.error('Erreur lors de la connexion :', error);
         this.isLogFailed = true;
       }
-    }
+    );
   }
 
-  get getUsername() { return this.loginForm.get('username'); }
+  get getUsername() { return this.loginForm.get('login'); }
   get getPassword() { return this.loginForm.get('password'); }
+  get getRole() { return this.loginForm.get('role'); }
 }

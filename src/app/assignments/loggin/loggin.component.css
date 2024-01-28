@@ -1,0 +1,10 @@
+.centered-form {
+    display: flex; /* Utilise flexbox pour centrer les éléments */
+    justify-content: center; /* Centre horizontalement les éléments enfants */
+    height: 80vh; /* Donne une hauteur à votre conteneur, vh est basé sur la hauteur de la fenêtre du navigateur */
+  }
+  
+h2 {
+    margin-left: auto;
+    margin-right: auto;
+}

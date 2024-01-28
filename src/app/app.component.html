@@ -2,7 +2,7 @@
     <mat-toolbar-row>
         <button mat-button (click)="openSidenav=!openSidenav"><mat-icon>menu</mat-icon></button>
         <button mat-button routerLink="/home"><mat-icon>home</mat-icon></button>
-        <button *ngIf="!authService.loggedIn" (click)="onLogginForm()"><mat-icon>person</mat-icon></button>
+        <button *ngIf="!authService.loggedIn" mat-button (click)="onLogginForm()"><mat-icon>person</mat-icon></button>
         <button *ngIf="authService.loggedIn" mat-button (click)="onLogOut()"><mat-icon>exit_to_app</mat-icon></button>
     </mat-toolbar-row>
 </mat-toolbar>
@@ -15,10 +15,10 @@
             <mat-list-item><a routerLink="/home"
                     style="color: aliceblue; text-decoration: none; white-space: pre-wrap;">Liste des
                     devoirs</a></mat-list-item>
-            <mat-list-item><a routerLink="/add"
+            <mat-list-item><a routerLink="/add" mat-button [disabled]="!isLog()"
                     style="color: aliceblue; text-decoration: none; white-space: pre-wrap;">Ajout d'un
                     devoir</a></mat-list-item>
-            <mat-list-item><a routerLink="/home"
+            <mat-list-item><a routerLink="/add-test" mat-button [disabled]="!isAdmin()"
                     style="color: aliceblue; text-decoration: none; white-space: pre-wrap;">Génération de données
                     test</a></mat-list-item>
         </mat-list>

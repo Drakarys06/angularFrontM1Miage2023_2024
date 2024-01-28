@@ -6,6 +6,7 @@ import { AddAssignmentComponent } from './assignments/add-assignment/add-assignm
 import { AssignmentDetailComponent } from './assignments/assignment-detail/assignment-detail.component';
 import { EditassignmentComponent } from './assignments/editassignment/editassignment.component';
 import { LogginComponent } from './assignments/loggin/loggin.component';
+import { AddTestComponent } from './assignments/add-test/add-test.component';
 
 const routes: Routes = [
     { path: '', component: AssignmentsComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
     { path: 'add', component: AddAssignmentComponent },
     { path: 'assignment/:id', component: AssignmentDetailComponent },
     { path: 'assignment/:id/edit', component: EditassignmentComponent},
-    { path: 'loggin', component: LogginComponent }
+    { path: 'loggin', component: LogginComponent },
+    { path: 'add-test', component: AddTestComponent},
   ];
 
 @NgModule({

@@ -8,9 +8,6 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field>
-    <input matInput [(ngModel)]="auteur" name="auteur" placeholder="auteur" />
-  </mat-form-field>
-  <mat-form-field>
     <mat-label> Matière </mat-label>
     <mat-select [(ngModel)]="matiere" name="matiere">
       <mat-option *ngFor="let matiere of matieres" [value]="matiere">

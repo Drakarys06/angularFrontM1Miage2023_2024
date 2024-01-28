@@ -6,29 +6,22 @@ import { Users } from '../assignments/users.model';
 })
 
 export class AuthService {
-
+  loggedInUser: string;
   loggedIn = false;
 
-  getUsers: Users | null = null;
-
-  users: Users[] = [
-    { login: 'admin', password: 'admin', role: 'admin' },
-    { login: 'user1', password: 'user1', role: 'user' },
-    { login: 'user2', password: 'user2', role: 'user' }
-  ];
+  getUser;
+  getUsers: Users[];
   isAuth: any;
 
-  logIn(login: string, password: string): boolean {
-    const user = this.users.find(u => u.login === login && u.password === password)
-    if (user) {
-      this.getUsers = user;
-      this.loggedIn = true;
-      if (user.role === 'admin') {
-        this.isAdmin();
-      }
-      return this.loggedIn;
+
+  logIn(role: string): boolean {
+    this.loggedIn = true;
+    console.log('role : ' + role);
+    if (role === 'admin') {
+      console.log(this.getUser);
+      this.isAdmin();
     }
-    return false;
+    return this.loggedIn;
   }
 
   logOut() {
@@ -44,11 +37,11 @@ export class AuthService {
   }
 
   isAdmin(): Promise<boolean> {
-    return Promise.resolve(this.getUsers?.role === 'admin');
+    return Promise.resolve(this.getUser?.role === 'admin');
   }
 
   isAdmin2(): boolean {
-    return this.getUsers?.role === 'admin';
+    return this.getUser?.user === 'admin';
   }
 
 }

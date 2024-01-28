@@ -40,4 +40,14 @@ export class AppComponent {
     this.authService.logOut();
     this.router.navigate(['/home']);
   }
+
+  isAdmin(){
+    console.log("isAdmin");
+    console.log(this.authService.isAdmin2());
+    return this.authService.isAdmin2();
+  }
+
+  isLog(){
+    return this.authService.isLog2();
+  }
 }

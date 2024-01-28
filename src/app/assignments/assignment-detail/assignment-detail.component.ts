@@ -51,4 +51,9 @@ export class AssignmentDetailComponent implements OnInit {
     console.log(this.authService.isAdmin2());
     return this.authService.isAdmin2();
   }
+  
+  isLog(): boolean  {
+    console.log(this.authService.isLog2());
+    return this.authService.isLog2();
+  }
 }
