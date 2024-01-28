@@ -1,29 +1,74 @@
-# HomeWork send by CHOUBRAC Thomas
+# Projet Angular Front M1 Miage 2023_2024
 
-# AssignmentApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+## Table des matières
+- [Projet Angular Front M1 Miage 2023_2024](#projet-angular-front-m1-miage-2023_2024)
+  - [Table des matières](#table-des-matières)
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Utilisation](#utilisation)
+  - [Contribution](#contribution)
+  - [Déploiement](#déploiement)
+  - [Construit avec](#construit-avec)
+  - [Auteurs](#auteurs)
 
-## Development server
+## Description
+Ce projet est un projet Angular Front pour le cours de M1 Miage 2023_2024.
+Ce projet permet de gérer de tenir un calendrier de rendu de projet et de gestion de devoir.
+Pour cela, il faut se connecter avec un compte utilisateur.
+Une fois connecté, on peut voir les devoirs à rendre, les devoirs rendus et les devoirs en cours.
+On peut aussi ajouter un devoir, modifier un devoir et supprimer un devoir.
+On peut aussi voir les détails d'un devoir en cliquant le devoir en question.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Pour se connecter, il faut utiliser un des comptes suivants :
+Professeur :
+Professeur1 : Professeur1
+Professeur2 : Professeur2
 
-## Code scaffolding
+Eleve :
+Eleve1 : Eleve1
+Eleve2 : Eleve2
+Eleve3 : Eleve3
+Eleve4 : Eleve4
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
+Guide sur comment installer le projet sur votre machine locale. Pour les projets de logiciels, cela peut inclure des instructions sur la configuration de l'environnement de développement.
 
-## Build
+```bash
+git clone https://github.com/Drakarys06/angularFrontM1Miage2023_2024.git
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Utilisation
+Pour voir l'utilisation du projet, il faut lancer le serveur Angular avec la commande suivante :
 
-## Running unit tests
+```bash
+ng serve
+```
+Petite vidéo de présentation : https://youtu.be/NmD7YZfBA5s
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Contribution
+Thomas Choubrac
+Mise en place sur render.com
+Add assigment
+Pagination
+Mise en place des assigment sur la base de données
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Léna Bitch
+Loggin sur la basse de données
+Correction du css
+Edit assigment et détails
 
-## Further help
+## Déploiement
+Le projet est déployer sur Render.com et visitable ici : https://angularfront-m1miage2023-2024.onrender.com/home
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Construit avec
+- Angular
+- TypeScript
+- MangoDB
+
+## Auteurs
+Léna Bitch
+Thomas Choubrac
+
